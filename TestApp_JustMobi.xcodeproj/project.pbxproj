@@ -6,30 +6,21 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CEEE16C02E2A861800E1D7A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */; };
+		CEEE16C22E2A861800E1D7A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEE16BD2E2A861800E1D7A0 /* LaunchScreen.storyboard */; };
+		CEEE16C32E2A861800E1D7A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16B92E2A861800E1D7A0 /* AppDelegate.swift */; };
+		CEEE16C42E2A861800E1D7A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16BE2E2A861800E1D7A0 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CEEE16A12E2A80EB00E1D7A0 /* TestApp_JustMobi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp_JustMobi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEEE16B92E2A861800E1D7A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEEE16BB2E2A861800E1D7A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEEE16BC2E2A861800E1D7A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CEEE16BE2E2A861800E1D7A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CEEE16B32E2A80ED00E1D7A0 /* Exceptions for "TestApp_JustMobi" folder in "TestApp_JustMobi" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = CEEE16A02E2A80EB00E1D7A0 /* TestApp_JustMobi */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		CEEE16A32E2A80EB00E1D7A0 /* TestApp_JustMobi */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CEEE16B32E2A80ED00E1D7A0 /* Exceptions for "TestApp_JustMobi" folder in "TestApp_JustMobi" target */,
-			);
-			path = TestApp_JustMobi;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CEEE169E2E2A80EB00E1D7A0 /* Frameworks */ = {
@@ -45,7 +36,7 @@
 		CEEE16982E2A80EB00E1D7A0 = {
 			isa = PBXGroup;
 			children = (
-				CEEE16A32E2A80EB00E1D7A0 /* TestApp_JustMobi */,
+				CEEE16BF2E2A861800E1D7A0 /* TestApp_JustMobi */,
 				CEEE16A22E2A80EB00E1D7A0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +47,34 @@
 				CEEE16A12E2A80EB00E1D7A0 /* TestApp_JustMobi.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CEEE16BF2E2A861800E1D7A0 /* TestApp_JustMobi */ = {
+			isa = PBXGroup;
+			children = (
+				CEEE16C52E2A8B9200E1D7A0 /* App */,
+				CEEE16C62E2A8B9A00E1D7A0 /* UI */,
+				CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */,
+				CEEE16BB2E2A861800E1D7A0 /* Info.plist */,
+			);
+			path = TestApp_JustMobi;
+			sourceTree = "<group>";
+		};
+		CEEE16C52E2A8B9200E1D7A0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CEEE16B92E2A861800E1D7A0 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CEEE16C62E2A8B9A00E1D7A0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CEEE16BE2E2A861800E1D7A0 /* ViewController.swift */,
+				CEEE16BD2E2A861800E1D7A0 /* LaunchScreen.storyboard */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,9 +91,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				CEEE16A32E2A80EB00E1D7A0 /* TestApp_JustMobi */,
 			);
 			name = TestApp_JustMobi;
 			packageProductDependencies = (
@@ -122,6 +138,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEE16C02E2A861800E1D7A0 /* Assets.xcassets in Resources */,
+				CEEE16C22E2A861800E1D7A0 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +150,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEE16C32E2A861800E1D7A0 /* AppDelegate.swift in Sources */,
+				CEEE16C42E2A861800E1D7A0 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CEEE16BD2E2A861800E1D7A0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEEE16BC2E2A861800E1D7A0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CEEE16B52E2A80ED00E1D7A0 /* Debug */ = {
@@ -150,9 +181,9 @@
 				INFOPLIST_FILE = TestApp_JustMobi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -160,9 +191,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.pavelGritskov.TestApp-JustMobi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -178,9 +213,9 @@
 				INFOPLIST_FILE = TestApp_JustMobi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -188,9 +223,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.pavelGritskov.TestApp-JustMobi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
