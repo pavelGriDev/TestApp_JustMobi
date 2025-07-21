@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TaskOneViewController.swift
 //  TestApp_JustMobi
 //
 //  Created by Pavel Gritskov on 18.07.25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TaskOneViewController: UIViewController {
     
     enum Appearance {
         static let circleGiftViewWidth: CGFloat = 168
@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     
     private lazy var giftView = CircleWithGiftView(imageName: .giftBoxRed)
     
-    private var time = 1200
-    private weak var timer: Timer?
+    private var timeLimit = 1200
+    private weak var giftTimer: Timer?
     
     // MARK: - Life Circle
 
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         giftView.startAnimation()
-        giftView.setTime(time)
+        giftView.setTime(timeLimit)
         createTimer()
     }
     
@@ -43,11 +43,17 @@ class ViewController: UIViewController {
 
 // MARK: - Setup
 
-private extension ViewController {
+private extension TaskOneViewController {
     
     func setup() {
         view.backgroundColor = .white
         view.addSubviewsForAutoLayout(giftView)
+        let giftViveTapGesture = UITapGestureRecognizer(target: self, action: #selector(giftTapGesture))
+        giftView.addGestureRecognizer(giftViveTapGesture)
+    }
+    
+    @objc func giftTapGesture() {
+        print("Show a gift...")
     }
     
     func setupLayout() {
@@ -62,21 +68,21 @@ private extension ViewController {
 
 // MARK: - Timer
 
-private extension ViewController {
+private extension TaskOneViewController {
     
     func createTimer() {
         stopTimer()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerHandler), userInfo: nil, repeats: true)
-        timer?.tolerance = 0.4
+        giftTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerHandler), userInfo: nil, repeats: true)
+        giftTimer?.tolerance = 0.4
     }
     
     @objc func timerHandler() {
-        time -= 1
-        giftView.setTime(time)
+        timeLimit -= 1
+        giftView.setTime(timeLimit)
     }
     
     func stopTimer() {
-        timer?.invalidate()
-        timer = nil
+        giftTimer?.invalidate()
+        giftTimer = nil
     }
 }
