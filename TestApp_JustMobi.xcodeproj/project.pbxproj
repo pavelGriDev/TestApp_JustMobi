@@ -13,6 +13,7 @@
 		CEEE16C42E2A861800E1D7A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16BE2E2A861800E1D7A0 /* ViewController.swift */; };
 		CEEE16C92E2AB2F900E1D7A0 /* View+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16C82E2AB2F900E1D7A0 /* View+ext.swift */; };
 		CEEE16CC2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16CB2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift */; };
+		CEEE16CE2E2E4C3300E1D7A0 /* CircleWithGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16CD2E2E4C3300E1D7A0 /* CircleWithGiftView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CEEE16BE2E2A861800E1D7A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CEEE16C82E2AB2F900E1D7A0 /* View+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ext.swift"; sourceTree = "<group>"; };
 		CEEE16CB2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokedTextLabel.swift; sourceTree = "<group>"; };
+		CEEE16CD2E2E4C3300E1D7A0 /* CircleWithGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleWithGiftView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				CEEE16CB2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift */,
+				CEEE16CD2E2E4C3300E1D7A0 /* CircleWithGiftView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEEE16C32E2A861800E1D7A0 /* AppDelegate.swift in Sources */,
+				CEEE16CE2E2E4C3300E1D7A0 /* CircleWithGiftView.swift in Sources */,
 				CEEE16C42E2A861800E1D7A0 /* ViewController.swift in Sources */,
 				CEEE16CC2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift in Sources */,
 				CEEE16C92E2AB2F900E1D7A0 /* View+ext.swift in Sources */,
