@@ -15,7 +15,7 @@ final class TaskButton: UIButton {
         setTitle(title, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         setTitleColor(.white, for: .normal)
-        backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+        backgroundColor = UIColor.accentPurple
         layer.cornerRadius = 20
     }
 }

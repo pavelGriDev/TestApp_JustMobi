@@ -10,6 +10,7 @@ import UIKit
 final class StartViewController: UIViewController {
     
     private let taskOneButton = TaskButton(title: "Task One")
+    private let taskTwoButton = TaskButton(title: "Task Two")
     private let taskThreeButton = TaskButton(title: "Task Three")
     
     private let stackView = UIStackView()
@@ -19,6 +20,12 @@ final class StartViewController: UIViewController {
         setup()
         setupLayout()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        taskTwoButton.isEnabled = false
+        taskTwoButton.backgroundColor = .lightGray
+    }
 }
 
 // MARK: - Setup
@@ -27,7 +34,7 @@ private extension StartViewController {
     func setup() {
         view.backgroundColor = .white
         
-        [taskOneButton, taskThreeButton].enumerated().forEach {
+        [taskOneButton, taskTwoButton, taskThreeButton].enumerated().forEach {
             stackView.addArrangedSubview($1)
             $1.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
             $1.tag = $0
@@ -35,7 +42,7 @@ private extension StartViewController {
         
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = 20
+        stackView.spacing = 8
         view.addSubviewsForAutoLayout(stackView)
     }
     
@@ -44,8 +51,9 @@ private extension StartViewController {
         case 0:
             let taskOneViewController = TaskOneViewController()
             navigationController?.pushViewController(taskOneViewController, animated: true)
-        case 1:
-            print("1")
+        case 2:
+            let taskThreeViewController = TaskThreeBuilder().build()
+            navigationController?.pushViewController(taskThreeViewController, animated: true)
         default:
             break
         }
