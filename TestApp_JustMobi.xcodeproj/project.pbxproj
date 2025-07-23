@@ -22,6 +22,9 @@
 		CEFDA1032E31431700B5C743 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1022E31431700B5C743 /* Item.swift */; };
 		CEFDA1072E31663900B5C743 /* TaskThreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1062E31663900B5C743 /* TaskThreeCell.swift */; };
 		CEFDA1092E31669900B5C743 /* Cell+reuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1082E31669900B5C743 /* Cell+reuseId.swift */; };
+		CEFDA10B2E31769B00B5C743 /* FreeTrialBunnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA10A2E31769B00B5C743 /* FreeTrialBunnerView.swift */; };
+		CEFDA10F2E318CC400B5C743 /* HashtagsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA10E2E318CC400B5C743 /* HashtagsListView.swift */; };
+		CEFDA1112E318E4C00B5C743 /* HashtagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1102E318E4C00B5C743 /* HashtagCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		CEFDA1022E31431700B5C743 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CEFDA1062E31663900B5C743 /* TaskThreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreeCell.swift; sourceTree = "<group>"; };
 		CEFDA1082E31669900B5C743 /* Cell+reuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+reuseId.swift"; sourceTree = "<group>"; };
+		CEFDA10A2E31769B00B5C743 /* FreeTrialBunnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTrialBunnerView.swift; sourceTree = "<group>"; };
+		CEFDA10E2E318CC400B5C743 /* HashtagsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagsListView.swift; sourceTree = "<group>"; };
+		CEFDA1102E318E4C00B5C743 /* HashtagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +192,8 @@
 		CEFDA1042E31653600B5C743 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEFDA10A2E31769B00B5C743 /* FreeTrialBunnerView.swift */,
+				CEFDA10E2E318CC400B5C743 /* HashtagsListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				CEFDA1062E31663900B5C743 /* TaskThreeCell.swift */,
+				CEFDA1102E318E4C00B5C743 /* HashtagCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -278,12 +287,15 @@
 				CEEE16CE2E2E4C3300E1D7A0 /* CircleWithGiftView.swift in Sources */,
 				CEFDA1072E31663900B5C743 /* TaskThreeCell.swift in Sources */,
 				CEEE16C42E2A861800E1D7A0 /* TaskOneViewController.swift in Sources */,
+				CEFDA10B2E31769B00B5C743 /* FreeTrialBunnerView.swift in Sources */,
 				CEFDA1032E31431700B5C743 /* Item.swift in Sources */,
 				CEFDA1012E31400200B5C743 /* TaskThreePresenter.swift in Sources */,
 				CEEE16CC2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift in Sources */,
 				CEEE16C92E2AB2F900E1D7A0 /* View+ext.swift in Sources */,
+				CEFDA1112E318E4C00B5C743 /* HashtagCell.swift in Sources */,
 				CEFDA1092E31669900B5C743 /* Cell+reuseId.swift in Sources */,
 				CEEE16D12E2E667C00E1D7A0 /* StartViewController.swift in Sources */,
+				CEFDA10F2E318CC400B5C743 /* HashtagsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

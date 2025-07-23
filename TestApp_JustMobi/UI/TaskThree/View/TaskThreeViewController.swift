@@ -16,46 +16,37 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     enum Appearance {
         static let horizontalOffset: CGFloat = 16
         static let bannerWidth: CGFloat = 108
+        static let contentSpacing: CGFloat = 15
+        // collection content
+        static let horizontalInset: CGFloat = 16
+        static let verticalInset: CGFloat = 8
+        static let spacing: CGFloat = 8
     }
     
     var presenter: TaskThreePresenterProtocol?
     
     private var content: [Item] = []
     
-    private lazy var bannerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.accentPurple
-        view.layer.cornerRadius = 12
-        return view
-    }()
+    private lazy var trialBannerView = FreeTrialBannerView()
+    private lazy var hashtagsListView = HashtagsListView()
     
-    private lazy var fitsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        label.textColor = .white
-        label.text = "Подходит для:"
-        return label
-    }()
-    
-    private let stackView = {
+    private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = 4
+        stackView.axis = .vertical
+        stackView.spacing = Appearance.contentSpacing
         return stackView
-    }()
-    
-    private let scrollView: UIScrollView = {
-        let scroll = UIScrollView()
-        scroll.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        scroll.showsHorizontalScrollIndicator = false
-        return scroll
     }()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 8
-        layout.minimumLineSpacing = 8
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        layout.minimumInteritemSpacing = Appearance.spacing
+        layout.minimumLineSpacing = Appearance.spacing
+        layout.sectionInset = UIEdgeInsets(
+            top: Appearance.verticalInset,
+            left: Appearance.horizontalInset,
+            bottom: Appearance.verticalInset,
+            right: Appearance.horizontalInset
+        )
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
@@ -74,12 +65,13 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
         self.content = content
     }
     
-    
     // MARK: - Life Circle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
+        trialBannerView.configure()
+        hashtagsListView.configure(with: ["#Осень", "#Insta-стиль", "#Мода2023", "#Одежда", "#Аксессуары"])
         setup()
         setupLayout()
     }
@@ -89,24 +81,11 @@ private extension TaskThreeViewController {
     
     func setup() {
         view.backgroundColor = UIColor.black
-        scrollView.addSubviewsForAutoLayout(stackView)
-        view.addSubviewsForAutoLayout(bannerView, fitsLabel, scrollView, collectionView)
         
-        let hashtags = ["#Осень", "#Insta-стиль", "#Мода2023", "#Одежда", "#Аксессуары"]
-
-        for (index, tag) in hashtags.enumerated() {
-            let button = UIButton(type: .system)
-            button.setTitle(tag, for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
-            button.tintColor = .textBlue
-            button.backgroundColor = .tagBackgroundBlue
-            button.layer.cornerRadius = 12
-            button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12)
-            button.sizeToFit()
-            button.addTarget(self, action: #selector(tagButtonHandler), for: .touchUpInside)
-            button.tag = index
-            stackView.addArrangedSubview(button)
+        [trialBannerView, hashtagsListView, collectionView].forEach {
+            contentStackView.addArrangedSubview($0)
         }
+        view.addSubviewsForAutoLayout(contentStackView)
     }
     
     @objc func tagButtonHandler(_ sender: UIButton) {
@@ -115,33 +94,12 @@ private extension TaskThreeViewController {
     
     func setupLayout() {
         NSLayoutConstraint.activate([
-            bannerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            bannerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Appearance.horizontalOffset),
-            bannerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Appearance.horizontalOffset),
-            bannerView.heightAnchor.constraint(equalToConstant: Appearance.bannerWidth),
-            
-            // fitsLabel
-            fitsLabel.topAnchor.constraint(equalTo: bannerView.bottomAnchor, constant: 15),
-            fitsLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Appearance.horizontalOffset),
-            fitsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Appearance.horizontalOffset),
-            
-            // scroll
-            scrollView.topAnchor.constraint(equalTo: fitsLabel.bottomAnchor, constant: 8),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.heightAnchor.constraint(equalToConstant: 25),
-            
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
-            
-            // collection
-            collectionView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 16),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            trialBannerView.heightAnchor.constraint(equalToConstant: Appearance.bannerWidth),
         ])
     }
 }
@@ -170,8 +128,8 @@ extension TaskThreeViewController: UICollectionViewDataSource {
 
 extension TaskThreeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let padding: CGFloat = 16 * 2
-        let spacing: CGFloat = 8
+        let padding: CGFloat = Appearance.horizontalInset * 2
+        let spacing: CGFloat = Appearance.verticalInset
         let availableWidth = view.frame.width - padding - spacing
         let width = availableWidth / 2
         return CGSize(width: width, height: width * 1.5)
@@ -180,14 +138,18 @@ extension TaskThreeViewController: UICollectionViewDelegateFlowLayout {
 
 extension TaskThreeViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            print("prefetchItemsAt: \(indexPath.item)")
+        guard let indexPath = indexPaths.first else { return }
+        
+        if indexPath.item == content.count - 5 {
+            print("Load more items....")
         }
+        
+        print("prefetchItemsAt: \(indexPath.item)")
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            print("cancelPrefetchingForItemsAt: \(indexPath.item)")
-        }
+        guard let indexPath = indexPaths.first else { return }
+        
+        print("cancelPrefetchingForItemsAt: \(indexPath.item)")
     }
 }
