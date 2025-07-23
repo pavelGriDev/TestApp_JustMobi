@@ -16,6 +16,12 @@
 		CEEE16CE2E2E4C3300E1D7A0 /* CircleWithGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16CD2E2E4C3300E1D7A0 /* CircleWithGiftView.swift */; };
 		CEEE16D12E2E667C00E1D7A0 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16D02E2E667C00E1D7A0 /* StartViewController.swift */; };
 		CEEE16D32E2E88F000E1D7A0 /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16D22E2E88F000E1D7A0 /* TaskButton.swift */; };
+		CEEE16D72E2E90A800E1D7A0 /* TaskThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16D62E2E90A800E1D7A0 /* TaskThreeViewController.swift */; };
+		CEFDA0FF2E313F4800B5C743 /* TaskThreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA0FE2E313F4800B5C743 /* TaskThreeBuilder.swift */; };
+		CEFDA1012E31400200B5C743 /* TaskThreePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1002E31400200B5C743 /* TaskThreePresenter.swift */; };
+		CEFDA1032E31431700B5C743 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1022E31431700B5C743 /* Item.swift */; };
+		CEFDA1072E31663900B5C743 /* TaskThreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1062E31663900B5C743 /* TaskThreeCell.swift */; };
+		CEFDA1092E31669900B5C743 /* Cell+reuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1082E31669900B5C743 /* Cell+reuseId.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		CEEE16CD2E2E4C3300E1D7A0 /* CircleWithGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleWithGiftView.swift; sourceTree = "<group>"; };
 		CEEE16D02E2E667C00E1D7A0 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CEEE16D22E2E88F000E1D7A0 /* TaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskButton.swift; sourceTree = "<group>"; };
+		CEEE16D62E2E90A800E1D7A0 /* TaskThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreeViewController.swift; sourceTree = "<group>"; };
+		CEFDA0FE2E313F4800B5C743 /* TaskThreeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreeBuilder.swift; sourceTree = "<group>"; };
+		CEFDA1002E31400200B5C743 /* TaskThreePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreePresenter.swift; sourceTree = "<group>"; };
+		CEFDA1022E31431700B5C743 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		CEFDA1062E31663900B5C743 /* TaskThreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreeCell.swift; sourceTree = "<group>"; };
+		CEFDA1082E31669900B5C743 /* Cell+reuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+reuseId.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,7 @@
 				CEEE16CA2E2BD49B00E1D7A0 /* Common */,
 				CEEE16CF2E2E660E00E1D7A0 /* StartScreen */,
 				CEEE16D42E2E897300E1D7A0 /* TaskOne */,
+				CEEE16D52E2E908700E1D7A0 /* TaskThree */,
 				CEEE16BD2E2A861800E1D7A0 /* LaunchScreen.storyboard */,
 			);
 			path = UI;
@@ -94,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				CEEE16C82E2AB2F900E1D7A0 /* View+ext.swift */,
+				CEFDA1082E31669900B5C743 /* Cell+reuseId.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -122,6 +136,66 @@
 				CEEE16BE2E2A861800E1D7A0 /* TaskOneViewController.swift */,
 			);
 			path = TaskOne;
+			sourceTree = "<group>";
+		};
+		CEEE16D52E2E908700E1D7A0 /* TaskThree */ = {
+			isa = PBXGroup;
+			children = (
+				CEFDA0FD2E313E9000B5C743 /* Model */,
+				CEFDA0FC2E313E8700B5C743 /* Bulder */,
+				CEFDA0FB2E313E7B00B5C743 /* Presenter */,
+				CEFDA0FA2E313E7400B5C743 /* View */,
+			);
+			path = TaskThree;
+			sourceTree = "<group>";
+		};
+		CEFDA0FA2E313E7400B5C743 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEFDA1052E31660B00B5C743 /* Cell */,
+				CEFDA1042E31653600B5C743 /* Views */,
+				CEEE16D62E2E90A800E1D7A0 /* TaskThreeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEFDA0FB2E313E7B00B5C743 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CEFDA1002E31400200B5C743 /* TaskThreePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CEFDA0FC2E313E8700B5C743 /* Bulder */ = {
+			isa = PBXGroup;
+			children = (
+				CEFDA0FE2E313F4800B5C743 /* TaskThreeBuilder.swift */,
+			);
+			path = Bulder;
+			sourceTree = "<group>";
+		};
+		CEFDA0FD2E313E9000B5C743 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEFDA1022E31431700B5C743 /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEFDA1042E31653600B5C743 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CEFDA1052E31660B00B5C743 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEFDA1062E31663900B5C743 /* TaskThreeCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,10 +273,16 @@
 			files = (
 				CEEE16C32E2A861800E1D7A0 /* AppDelegate.swift in Sources */,
 				CEEE16D32E2E88F000E1D7A0 /* TaskButton.swift in Sources */,
+				CEEE16D72E2E90A800E1D7A0 /* TaskThreeViewController.swift in Sources */,
+				CEFDA0FF2E313F4800B5C743 /* TaskThreeBuilder.swift in Sources */,
 				CEEE16CE2E2E4C3300E1D7A0 /* CircleWithGiftView.swift in Sources */,
+				CEFDA1072E31663900B5C743 /* TaskThreeCell.swift in Sources */,
 				CEEE16C42E2A861800E1D7A0 /* TaskOneViewController.swift in Sources */,
+				CEFDA1032E31431700B5C743 /* Item.swift in Sources */,
+				CEFDA1012E31400200B5C743 /* TaskThreePresenter.swift in Sources */,
 				CEEE16CC2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift in Sources */,
 				CEEE16C92E2AB2F900E1D7A0 /* View+ext.swift in Sources */,
+				CEFDA1092E31669900B5C743 /* Cell+reuseId.swift in Sources */,
 				CEEE16D12E2E667C00E1D7A0 /* StartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
