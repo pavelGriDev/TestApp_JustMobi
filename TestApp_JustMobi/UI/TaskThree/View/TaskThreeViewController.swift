@@ -70,7 +70,7 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        trialBannerView.configure()
+        trialBannerView.configure(with: "Try three days free trial")
         hashtagsListView.configure(with: ["#Осень", "#Insta-стиль", "#Мода2023", "#Одежда", "#Аксессуары"])
         setup()
         setupLayout()

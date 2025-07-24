@@ -9,6 +9,16 @@ import UIKit
 
 final class FreeTrialBannerView: UIView {
     
+    enum Appearance {
+        static let horizontalOffset: CGFloat = 16
+        static let cornerRadius: CGFloat = 12
+        static let titleTopOffset: CGFloat = 22
+        static let titleLeftOffset: CGFloat = 20
+        static let titleRightOffset: CGFloat = 152
+    }
+    
+    private let contentContainer = UIView()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -26,24 +36,30 @@ final class FreeTrialBannerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure() {
-        titleLabel.text = "Try three days free trial"
+    func configure(with text: String) {
+        titleLabel.text = text
     }
 }
 
 private extension FreeTrialBannerView {
     
     func setup() {
-        backgroundColor = UIColor.accentPurple
-        layer.cornerRadius = 12
-        self.addSubviewsForAutoLayout(titleLabel)
+        contentContainer.backgroundColor = UIColor.accentPurple
+        contentContainer.layer.cornerRadius = Appearance.cornerRadius
+        contentContainer.addSubviewsForAutoLayout(titleLabel)
+        self.addSubviewsForAutoLayout(contentContainer)
     }
     
     func setupLayout() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 22),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 152)
+            contentContainer.topAnchor.constraint(equalTo: self.topAnchor),
+            contentContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Appearance.horizontalOffset),
+            contentContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Appearance.horizontalOffset),
+            contentContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            titleLabel.topAnchor.constraint(equalTo: contentContainer.topAnchor, constant: Appearance.titleTopOffset),
+            titleLabel.leadingAnchor.constraint(equalTo: contentContainer.leadingAnchor, constant: Appearance.titleLeftOffset),
+            titleLabel.trailingAnchor.constraint(equalTo: contentContainer.trailingAnchor, constant: -Appearance.titleRightOffset)
         ])
     }
 }
