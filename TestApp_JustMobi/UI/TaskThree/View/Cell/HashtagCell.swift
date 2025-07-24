@@ -24,6 +24,18 @@ final class HashtagCell: UICollectionViewCell {
         return label
     }()
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                backgroundColor = .textBlue.withAlphaComponent(0.8)
+                hashtagLabel.textColor = .black
+            } else {
+                backgroundColor = .tagBackgroundBlue
+                hashtagLabel.textColor = .textBlue
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
