@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CECA09E82E323CE3000FF906 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09E72E323CE3000FF906 /* LoadingView.swift */; };
 		CECA09EB2E325A71000FF906 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09EA2E325A71000FF906 /* Logger.swift */; };
+		CECA09EF2E32649F000FF906 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09EE2E32649F000FF906 /* ApiResponse.swift */; };
+		CECA09F12E32663B000FF906 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09F02E32663B000FF906 /* ApiClient.swift */; };
 		CEEE16C02E2A861800E1D7A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */; };
 		CEEE16C22E2A861800E1D7A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEE16BD2E2A861800E1D7A0 /* LaunchScreen.storyboard */; };
 		CEEE16C32E2A861800E1D7A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16B92E2A861800E1D7A0 /* AppDelegate.swift */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		CECA09E72E323CE3000FF906 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CECA09EA2E325A71000FF906 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		CECA09EE2E32649F000FF906 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		CECA09F02E32663B000FF906 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		CEEE16A12E2A80EB00E1D7A0 /* TestApp_JustMobi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp_JustMobi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEE16B92E2A861800E1D7A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +77,22 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		CECA09EC2E32633D000FF906 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CECA09F02E32663B000FF906 /* ApiClient.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CECA09ED2E326345000FF906 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CECA09EE2E32649F000FF906 /* ApiResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CEEE16982E2A80EB00E1D7A0 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +112,8 @@
 		CEEE16BF2E2A861800E1D7A0 /* TestApp_JustMobi */ = {
 			isa = PBXGroup;
 			children = (
+				CECA09ED2E326345000FF906 /* Model */,
+				CECA09EC2E32633D000FF906 /* Service */,
 				CEEE16C72E2AB2E100E1D7A0 /* Extension */,
 				CEEE16C52E2A8B9200E1D7A0 /* App */,
 				CEEE16C62E2A8B9A00E1D7A0 /* UI */,
@@ -310,8 +332,10 @@
 				CECA09EB2E325A71000FF906 /* Logger.swift in Sources */,
 				CEFDA1112E318E4C00B5C743 /* HashtagCell.swift in Sources */,
 				CEFDA1092E31669900B5C743 /* Cell+reuseId.swift in Sources */,
+				CECA09EF2E32649F000FF906 /* ApiResponse.swift in Sources */,
 				CEEE16D12E2E667C00E1D7A0 /* StartViewController.swift in Sources */,
 				CEFDA10F2E318CC400B5C743 /* HashtagsListView.swift in Sources */,
+				CECA09F12E32663B000FF906 /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

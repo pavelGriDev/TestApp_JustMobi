@@ -130,7 +130,7 @@ extension TaskThreeViewController: UICollectionViewDataSource {
             withReuseIdentifier: TaskThreeCell.cellReuseIdentifier,
             for: indexPath
         ) as? TaskThreeCell else {
-            fatalError("Не удалось деконструировать PhotoCell")
+            fatalError("Cannot dequeue cell for identifier: \(TaskThreeCell.cellReuseIdentifier)")
         }
         
         let item = content[indexPath.item]
@@ -148,6 +148,10 @@ extension TaskThreeViewController: UICollectionViewDelegateFlowLayout {
         let availableWidth = view.frame.width - padding - spacing
         let width = availableWidth / 2
         return CGSize(width: width, height: width * 1.5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        Logger.printItems("selected item: \(indexPath.item)")
     }
 }
 
