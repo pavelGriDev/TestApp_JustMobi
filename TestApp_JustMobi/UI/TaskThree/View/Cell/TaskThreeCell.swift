@@ -6,12 +6,23 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TaskThreeCell: UICollectionViewCell {
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+    
+    private let placeholderImage: UIImage = {
+        let size = CGSize(width: 1, height: 1)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        UIColor.lightGray.setFill()
+        UIRectFill(CGRect(origin: .zero, size: size))
+        let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+        UIGraphicsEndImageContext()
+        return image
     }()
 
     override init(frame: CGRect) {
@@ -33,5 +44,14 @@ class TaskThreeCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
+    }
+    
+    func configure(with model: TaskThreeCellModel) {
+        imageView.sd_setImage(
+            with: URL(string: model.imageUrl),
+            placeholderImage: placeholderImage,
+            options: [.continueInBackground, .retryFailed],
+            completed: nil
+        )
     }
 }

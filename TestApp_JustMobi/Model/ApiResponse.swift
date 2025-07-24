@@ -40,24 +40,16 @@ class MockApiResponseBuilder {
     private func createRandomModel() -> BeardedMan {
         let count = Int.random(in: 1...5)
         let hashTags = Array(beardHashtags.shuffled().prefix(count))
-        let model: BeardedMan
-        if Bool.random() {
-            model = BeardedMan(
-                id: UUID().uuidString,
-                url: "https://placebeard.it/g/168/220",
-                width: 168,
-                height: 220,
-                tags: hashTags
-            )
-        } else {
-            model = BeardedMan(
-                id: UUID().uuidString,
-                url: "https://placebeard.it/g/168/196",
-                width: 168,
-                height: 196,
-                tags: hashTags
-            )
-        }
+        let width = Double.random(in: 150...300)
+        let height = Double.random(in: 200...300)
+        
+        let model = BeardedMan(
+            id: UUID().uuidString,
+            url: "https://placebeard.it/g/\(width)/\(height)",
+            width: width,
+            height: height,
+            tags: hashTags
+        )
         
         return model
     }

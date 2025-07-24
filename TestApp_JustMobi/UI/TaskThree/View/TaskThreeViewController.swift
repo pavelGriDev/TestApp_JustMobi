@@ -10,6 +10,7 @@ import CHTCollectionViewWaterfallLayout
 
 protocol TaskThreeViewControllerProtocol: AnyObject {
     func displayTrialBanner(with model: TaskThreeFreeTrialBannerModel, isVisible: Bool)
+    func display(hashTags: [String])
     func display(models: [TaskThreeCellModel])
     func setLoadingVisible(_ isVisible: Bool)
 }
@@ -72,6 +73,12 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
         }
     }
     
+    func display(hashTags: [String]) {
+        DispatchQueue.main.async {
+            self.hashtagsListView.configure(with: hashTags)
+        }
+    }
+    
     func display(models: [TaskThreeCellModel]) {
         cellModels = models
         DispatchQueue.main.async {
@@ -94,7 +101,6 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        hashtagsListView.configure(with: ["#Осень", "#Insta-стиль", "#Мода2023", "#Одежда", "#Аксессуары"])
         setup()
         setupLayout()
     }
@@ -146,8 +152,7 @@ extension TaskThreeViewController: UICollectionViewDataSource {
         }
         
         let item = cellModels[indexPath.item]
-        let imageName: [ImageResource] = [.image01, .image02, .image03, .image04, .image05, .image06, .image07]
-        cell.imageView.image = UIImage(resource: imageName.randomElement()!)
+        cell.configure(with: item)
         return cell
     }
 }

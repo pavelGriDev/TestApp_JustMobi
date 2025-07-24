@@ -17,6 +17,8 @@ final class TaskThreePresenter: TaskThreePresenterProtocol {
     private weak var viewController: TaskThreeViewControllerProtocol?
     private let apiClient: ApiClientProtocol
     
+    private var cellModels = [TaskThreeCellModel]()
+    private var hashTags = [String]()
     private var showTrialBanner = true
     private var contentPage = 0
     
@@ -27,8 +29,6 @@ final class TaskThreePresenter: TaskThreePresenterProtocol {
         self.viewController = viewController
         self.apiClient = apiClient
     }
-    
-    var cellModels = [TaskThreeCellModel]()
     
     // MARK: - TaskThreePresenterProtocol
     
@@ -56,8 +56,9 @@ private extension TaskThreePresenter {
             switch result {
             case .success(let response):
                 cellModels = response.data.map { TaskThreeCellModel(model: $0) }
+                hashTags = Array(Set(response.data.flatMap { $0.tags }))
                 viewController?.display(models: cellModels)
-                print("content count: \(response.data.count)")
+                viewController?.display(hashTags: hashTags)
             case .failure(let error):
                 // TODO: show an error message with an empty view
                 Logger.printError("Failed request with error: \(error)")
