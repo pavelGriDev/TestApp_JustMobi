@@ -9,6 +9,11 @@ import UIKit
 import SDWebImage
 
 class TaskThreeCell: UICollectionViewCell {
+    
+    enum Appearance {
+        static let cornerRadius: CGFloat = 14
+    }
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -29,7 +34,7 @@ class TaskThreeCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(imageView)
         contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = 14
+        contentView.layer.cornerRadius = Appearance.cornerRadius
     }
     
     required init?(coder: NSCoder) {

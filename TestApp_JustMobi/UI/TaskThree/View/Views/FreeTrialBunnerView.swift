@@ -10,6 +10,7 @@ import UIKit
 final class FreeTrialBannerView: UIView {
     
     enum Appearance {
+        static let bannerHeight: CGFloat = 108
         static let horizontalOffset: CGFloat = 16
         static let cornerRadius: CGFloat = 12
         static let titleTopOffset: CGFloat = 22
@@ -41,6 +42,8 @@ final class FreeTrialBannerView: UIView {
     }
 }
 
+// MARK: - Private Methods
+
 private extension FreeTrialBannerView {
     
     func setup() {
@@ -52,6 +55,8 @@ private extension FreeTrialBannerView {
     
     func setupLayout() {
         NSLayoutConstraint.activate([
+            self.heightAnchor.constraint(equalToConstant: Appearance.bannerHeight),
+            
             contentContainer.topAnchor.constraint(equalTo: self.topAnchor),
             contentContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Appearance.horizontalOffset),
             contentContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Appearance.horizontalOffset),

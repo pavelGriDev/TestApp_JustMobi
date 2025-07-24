@@ -19,7 +19,6 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     
     enum Appearance {
         static let horizontalOffset: CGFloat = 16
-        static let bannerWidth: CGFloat = 108
         static let contentSpacing: CGFloat = 15
         // collection content
         static let horizontalInset: CGFloat = 16
@@ -64,7 +63,19 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
         return collectionView
     }()
     
-    // MARK: - TaskThreeViewControllerProtocol
+    // MARK: - Life Circle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter?.viewDidLoad()
+        setup()
+        setupLayout()
+    }
+}
+
+// MARK: - TaskThreeViewControllerProtocol
+
+extension TaskThreeViewController {
     
     func displayTrialBanner(with model: TaskThreeFreeTrialBannerModel, isVisible: Bool) {
         trialBannerView.isHidden = !isVisible
@@ -95,16 +106,9 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
             }
         }
     }
-    
-    // MARK: - Life Circle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter?.viewDidLoad()
-        setup()
-        setupLayout()
-    }
 }
+
+// MARK: - Private Methods
 
 private extension TaskThreeViewController {
     
@@ -115,7 +119,6 @@ private extension TaskThreeViewController {
             contentStackView.addArrangedSubview($0)
         }
         hashtagsListView.delegate = self
-        
         view.addSubviewsForAutoLayout(contentStackView)
         view.addSubviewsForAutoLayout(loadingView)
     }
@@ -126,8 +129,6 @@ private extension TaskThreeViewController {
             contentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             contentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             contentStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            trialBannerView.heightAnchor.constraint(equalToConstant: Appearance.bannerWidth),
             
             loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             loadingView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -136,6 +137,8 @@ private extension TaskThreeViewController {
         ])
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension TaskThreeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -157,6 +160,8 @@ extension TaskThreeViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - CHTCollectionViewDelegateWaterfallLayout
+
 extension TaskThreeViewController: CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let padding: CGFloat = Appearance.horizontalInset * 2
@@ -176,6 +181,8 @@ extension TaskThreeViewController: CHTCollectionViewDelegateWaterfallLayout {
     }
 }
 
+// MARK: - UICollectionViewDataSourcePrefetching
+
 extension TaskThreeViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         guard let indexPath = indexPaths.first else { return }
@@ -187,6 +194,8 @@ extension TaskThreeViewController: UICollectionViewDataSourcePrefetching {
 //        print("prefetchItemsAt: \(indexPath.item)")
     }
 }
+
+// MARK: - HashtagsListDelegate
 
 extension TaskThreeViewController: HashtagsListDelegate {
     func didSelectHashtag(at index: Int) {

@@ -61,6 +61,8 @@ final class HashtagCell: UICollectionViewCell {
     }
 }
 
+// MARK: - Private Methods
+
 private extension HashtagCell {
     func setup() {
         backgroundColor = .tagBackgroundBlue

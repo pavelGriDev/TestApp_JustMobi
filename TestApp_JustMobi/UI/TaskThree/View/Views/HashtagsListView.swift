@@ -73,6 +73,8 @@ final class HashtagsListView: UIView {
     }
 }
 
+// MARK: - Private Methods
+
 private extension HashtagsListView {
     
     func setup() {
@@ -94,6 +96,8 @@ private extension HashtagsListView {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension HashtagsListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         content.count
@@ -111,6 +115,8 @@ extension HashtagsListView: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension HashtagsListView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
