@@ -8,11 +8,11 @@
 import Foundation
 
 protocol ApiClientProtocol {
-    func fetchRequest(limit: Int, page: Int, completion: @escaping (Result<ApiResponse, Error>) -> Void)
+    func fetchRequest(page: Int, completion: @escaping (Result<ApiResponse, Error>) -> Void)
 }
 
 final class ApiClient: ApiClientProtocol {
-    func fetchRequest(limit: Int, page: Int = 0, completion: @escaping (Result<ApiResponse, Error>) -> Void) {
+    func fetchRequest(page: Int = 0, completion: @escaping (Result<ApiResponse, Error>) -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + Double.random(in: 0.3...2.0)) {
             let response = MockApiResponseBuilder().createMockResponse(page: page)
             

@@ -15,5 +15,11 @@ class Logger {
         #endif
     }
     
+    static func printError(_ items: Any...) {
+        #if DEBUG
+        print("🤬",items)
+        #endif
+    }
+    
     private init() {}
 }

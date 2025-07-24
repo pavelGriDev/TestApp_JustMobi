@@ -11,28 +11,27 @@ class TaskThreeCell: UICollectionViewCell {
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .black
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 8
         return imageView
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLayout()
+        contentView.addSubview(imageView)
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 14
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupLayout() {
-        contentView.addSubviewsForAutoLayout(imageView)
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
-        ])
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.frame = contentView.bounds
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
     }
 }
