@@ -11,6 +11,8 @@
 		CECA09EB2E325A71000FF906 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09EA2E325A71000FF906 /* Logger.swift */; };
 		CECA09EF2E32649F000FF906 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09EE2E32649F000FF906 /* ApiResponse.swift */; };
 		CECA09F12E32663B000FF906 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09F02E32663B000FF906 /* ApiClient.swift */; };
+		CECA09F72E329446000FF906 /* TaskThreeFreeTrialBannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09F62E329446000FF906 /* TaskThreeFreeTrialBannerModel.swift */; };
+		CECA09FA2E32D139000FF906 /* CHTCollectionViewWaterfallLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CECA09F92E32D139000FF906 /* CHTCollectionViewWaterfallLayout */; };
 		CEEE16C02E2A861800E1D7A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */; };
 		CEEE16C22E2A861800E1D7A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEE16BD2E2A861800E1D7A0 /* LaunchScreen.storyboard */; };
 		CEEE16C32E2A861800E1D7A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16B92E2A861800E1D7A0 /* AppDelegate.swift */; };
@@ -23,7 +25,7 @@
 		CEEE16D72E2E90A800E1D7A0 /* TaskThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16D62E2E90A800E1D7A0 /* TaskThreeViewController.swift */; };
 		CEFDA0FF2E313F4800B5C743 /* TaskThreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA0FE2E313F4800B5C743 /* TaskThreeBuilder.swift */; };
 		CEFDA1012E31400200B5C743 /* TaskThreePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1002E31400200B5C743 /* TaskThreePresenter.swift */; };
-		CEFDA1032E31431700B5C743 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1022E31431700B5C743 /* Item.swift */; };
+		CEFDA1032E31431700B5C743 /* TaskThreeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1022E31431700B5C743 /* TaskThreeCellModel.swift */; };
 		CEFDA1072E31663900B5C743 /* TaskThreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1062E31663900B5C743 /* TaskThreeCell.swift */; };
 		CEFDA1092E31669900B5C743 /* Cell+reuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA1082E31669900B5C743 /* Cell+reuseId.swift */; };
 		CEFDA10B2E31769B00B5C743 /* FreeTrialBunnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDA10A2E31769B00B5C743 /* FreeTrialBunnerView.swift */; };
@@ -36,6 +38,7 @@
 		CECA09EA2E325A71000FF906 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		CECA09EE2E32649F000FF906 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		CECA09F02E32663B000FF906 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		CECA09F62E329446000FF906 /* TaskThreeFreeTrialBannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreeFreeTrialBannerModel.swift; sourceTree = "<group>"; };
 		CEEE16A12E2A80EB00E1D7A0 /* TestApp_JustMobi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp_JustMobi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEE16B92E2A861800E1D7A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +53,7 @@
 		CEEE16D62E2E90A800E1D7A0 /* TaskThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreeViewController.swift; sourceTree = "<group>"; };
 		CEFDA0FE2E313F4800B5C743 /* TaskThreeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreeBuilder.swift; sourceTree = "<group>"; };
 		CEFDA1002E31400200B5C743 /* TaskThreePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreePresenter.swift; sourceTree = "<group>"; };
-		CEFDA1022E31431700B5C743 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		CEFDA1022E31431700B5C743 /* TaskThreeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreeCellModel.swift; sourceTree = "<group>"; };
 		CEFDA1062E31663900B5C743 /* TaskThreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskThreeCell.swift; sourceTree = "<group>"; };
 		CEFDA1082E31669900B5C743 /* Cell+reuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+reuseId.swift"; sourceTree = "<group>"; };
 		CEFDA10A2E31769B00B5C743 /* FreeTrialBunnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTrialBunnerView.swift; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECA09FA2E32D139000FF906 /* CHTCollectionViewWaterfallLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +224,8 @@
 		CEFDA0FD2E313E9000B5C743 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CEFDA1022E31431700B5C743 /* Item.swift */,
+				CEFDA1022E31431700B5C743 /* TaskThreeCellModel.swift */,
+				CECA09F62E329446000FF906 /* TaskThreeFreeTrialBannerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 			);
 			name = TestApp_JustMobi;
 			packageProductDependencies = (
+				CECA09F92E32D139000FF906 /* CHTCollectionViewWaterfallLayout */,
 			);
 			productName = TestApp_JustMobi;
 			productReference = CEEE16A12E2A80EB00E1D7A0 /* TestApp_JustMobi.app */;
@@ -289,6 +295,9 @@
 			);
 			mainGroup = CEEE16982E2A80EB00E1D7A0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CECA09F82E32D139000FF906 /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CEEE16A22E2A80EB00E1D7A0 /* Products */;
 			projectDirPath = "";
@@ -325,12 +334,13 @@
 				CEFDA1072E31663900B5C743 /* TaskThreeCell.swift in Sources */,
 				CEEE16C42E2A861800E1D7A0 /* TaskOneViewController.swift in Sources */,
 				CEFDA10B2E31769B00B5C743 /* FreeTrialBunnerView.swift in Sources */,
-				CEFDA1032E31431700B5C743 /* Item.swift in Sources */,
+				CEFDA1032E31431700B5C743 /* TaskThreeCellModel.swift in Sources */,
 				CEFDA1012E31400200B5C743 /* TaskThreePresenter.swift in Sources */,
 				CEEE16CC2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift in Sources */,
 				CEEE16C92E2AB2F900E1D7A0 /* View+ext.swift in Sources */,
 				CECA09EB2E325A71000FF906 /* Logger.swift in Sources */,
 				CEFDA1112E318E4C00B5C743 /* HashtagCell.swift in Sources */,
+				CECA09F72E329446000FF906 /* TaskThreeFreeTrialBannerModel.swift in Sources */,
 				CEFDA1092E31669900B5C743 /* Cell+reuseId.swift in Sources */,
 				CECA09EF2E32649F000FF906 /* ApiResponse.swift in Sources */,
 				CEEE16D12E2E667C00E1D7A0 /* StartViewController.swift in Sources */,
@@ -560,6 +570,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CECA09F82E32D139000FF906 /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.10;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CECA09F92E32D139000FF906 /* CHTCollectionViewWaterfallLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CECA09F82E32D139000FF906 /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */;
+			productName = CHTCollectionViewWaterfallLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEEE16992E2A80EB00E1D7A0 /* Project object */;
 }

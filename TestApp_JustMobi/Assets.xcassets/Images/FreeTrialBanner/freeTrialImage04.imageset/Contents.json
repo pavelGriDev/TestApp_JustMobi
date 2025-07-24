@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "freeTrialImage04.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
