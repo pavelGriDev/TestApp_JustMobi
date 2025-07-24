@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CHTCollectionViewWaterfallLayout
 
 protocol TaskThreeViewControllerProtocol: AnyObject {
-    func display(content: [Item])
+    func displayTrialBanner(with model: TaskThreeFreeTrialBannerModel, isVisible: Bool)
+    func display(models: [TaskThreeCellModel])
     func setLoadingVisible(_ isVisible: Bool)
 }
 
@@ -26,7 +28,7 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     
     var presenter: TaskThreePresenterProtocol?
     
-    private var content: [Item] = []
+    private var cellModels = [TaskThreeCellModel]()
     
     private lazy var trialBannerView = FreeTrialBannerView()
     private lazy var hashtagsListView = HashtagsListView()
@@ -40,16 +42,16 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     }()
     
     private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.columnCount = 2
         layout.minimumInteritemSpacing = Appearance.spacing
-        layout.minimumLineSpacing = Appearance.spacing
+        layout.minimumColumnSpacing = Appearance.spacing
         layout.sectionInset = UIEdgeInsets(
             top: Appearance.verticalInset,
             left: Appearance.horizontalInset,
             bottom: Appearance.verticalInset,
             right: Appearance.horizontalInset
         )
-
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -63,16 +65,27 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     
     // MARK: - TaskThreeViewControllerProtocol
     
-    func display(content: [Item]) {
-        self.content = content
-        collectionView.reloadData()
+    func displayTrialBanner(with model: TaskThreeFreeTrialBannerModel, isVisible: Bool) {
+        trialBannerView.isHidden = !isVisible
+        if isVisible {
+            trialBannerView.configure(with: model)
+        }
+    }
+    
+    func display(models: [TaskThreeCellModel]) {
+        cellModels = models
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     func setLoadingVisible(_ isVisible: Bool) {
-        if isVisible {
-            loadingView.start()
-        } else {
-            loadingView.stop()
+        DispatchQueue.main.async {
+            if isVisible {
+                self.loadingView.start()
+            } else {
+                self.loadingView.stop()
+            }
         }
     }
     
@@ -81,7 +94,6 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        trialBannerView.configure(with: "Try three days free trial")
         hashtagsListView.configure(with: ["#Осень", "#Insta-стиль", "#Мода2023", "#Одежда", "#Аксессуары"])
         setup()
         setupLayout()
@@ -121,7 +133,7 @@ private extension TaskThreeViewController {
 
 extension TaskThreeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return content.count
+        return cellModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -133,21 +145,25 @@ extension TaskThreeViewController: UICollectionViewDataSource {
             fatalError("Cannot dequeue cell for identifier: \(TaskThreeCell.cellReuseIdentifier)")
         }
         
-        let item = content[indexPath.item]
-        cell.imageView.image = UIImage(resource: item.imageName)
-        cell.layer.cornerRadius = 14
-        cell.clipsToBounds = true
+        let item = cellModels[indexPath.item]
+        let imageName: [ImageResource] = [.image01, .image02, .image03, .image04, .image05, .image06, .image07]
+        cell.imageView.image = UIImage(resource: imageName.randomElement()!)
         return cell
     }
 }
 
-extension TaskThreeViewController: UICollectionViewDelegateFlowLayout {
+extension TaskThreeViewController: CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let padding: CGFloat = Appearance.horizontalInset * 2
         let spacing: CGFloat = Appearance.verticalInset
+        
         let availableWidth = view.frame.width - padding - spacing
         let width = availableWidth / 2
-        return CGSize(width: width, height: width * 1.5)
+        let originalSize = cellModels[indexPath.item].size
+        let scale = width / originalSize.width
+        let height = originalSize.height * scale
+
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -159,17 +175,11 @@ extension TaskThreeViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         guard let indexPath = indexPaths.first else { return }
         
-        if indexPath.item == content.count - 5 {
+        if indexPath.item == cellModels.count - 5 {
             print("Load more items....")
         }
         
-        print("prefetchItemsAt: \(indexPath.item)")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        guard let indexPath = indexPaths.first else { return }
-        
-        print("cancelPrefetchingForItemsAt: \(indexPath.item)")
+//        print("prefetchItemsAt: \(indexPath.item)")
     }
 }
 

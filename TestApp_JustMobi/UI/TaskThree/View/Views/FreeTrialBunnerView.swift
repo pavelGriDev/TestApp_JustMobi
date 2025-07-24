@@ -36,8 +36,8 @@ final class FreeTrialBannerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with text: String) {
-        titleLabel.text = text
+    func configure(with model: TaskThreeFreeTrialBannerModel) {
+        titleLabel.text = model.title
     }
 }
 

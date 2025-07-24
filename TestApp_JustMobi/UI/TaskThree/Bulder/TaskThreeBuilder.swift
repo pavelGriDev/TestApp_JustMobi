@@ -10,7 +10,10 @@ import Foundation
 final class TaskThreeBuilder {
     func build() -> TaskThreeViewController {
         let viewController = TaskThreeViewController()
-        let presenter = TaskThreePresenter(viewController: viewController)
+        
+        // here is no DI yet, the ApiClient is temporarily created here
+        let apiClient = ApiClient()
+        let presenter = TaskThreePresenter(viewController: viewController, apiClient: apiClient)
         viewController.presenter = presenter
         return viewController
     }

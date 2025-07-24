@@ -18,4 +18,5 @@ struct TaskThreeCellModel {
     var id: String { model.id }
     var imageUrl: String { model.url }
     var hashTags: [String] { model.tags }
+    var size: CGSize { CGSize(width: model.width, height: model.height) }
 }

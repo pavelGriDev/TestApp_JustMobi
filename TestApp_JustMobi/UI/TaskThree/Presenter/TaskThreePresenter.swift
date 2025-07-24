@@ -14,39 +14,55 @@ protocol TaskThreePresenterProtocol {
 
 final class TaskThreePresenter: TaskThreePresenterProtocol {
     
-    weak var viewController: TaskThreeViewControllerProtocol?
+    private weak var viewController: TaskThreeViewControllerProtocol?
+    private let apiClient: ApiClientProtocol
     
-    init(viewController: TaskThreeViewControllerProtocol?) {
+    private var showTrialBanner = true
+    private var contentPage = 0
+    
+    init(
+        viewController: TaskThreeViewControllerProtocol?,
+        apiClient: ApiClientProtocol
+    ) {
         self.viewController = viewController
+        self.apiClient = apiClient
     }
     
-    let dataSource: [Item] = [
-        .init(id: 1, imageName: .image01),
-        .init(id: 2, imageName: .image02),
-        .init(id: 3, imageName: .image03),
-        .init(id: 4, imageName: .image04),
-        .init(id: 5, imageName: .image05),
-        .init(id: 6, imageName: .image06),
-        .init(id: 7, imageName: .image07),
-        .init(id: 8, imageName: .image01),
-        .init(id: 9, imageName: .image02),
-        .init(id: 10, imageName: .image01),
-        .init(id: 11, imageName: .image01),
-        .init(id: 12, imageName: .image02),
-        .init(id: 13, imageName: .image03),
-        .init(id: 14, imageName: .image04),
-        .init(id: 15, imageName: .image05),
-        .init(id: 16, imageName: .image06),
-        .init(id: 17, imageName: .image07),
-        .init(id: 18, imageName: .image01),
-        .init(id: 19, imageName: .image02),
-    ]
+    var cellModels = [TaskThreeCellModel]()
+    
+    // MARK: - TaskThreePresenterProtocol
     
     func viewDidLoad() {
-        viewController?.display(content: dataSource)
+        // a temporary solution that needs to be moved to AppStateService
+        showTrialBanner = true
+    
+        viewController?.displayTrialBanner(with: TaskThreeFreeTrialBannerModel.getModel, isVisible: showTrialBanner)
+        request()
     }
     
     func didSelectHashtag(at index: Int) {
         Logger.printItems("hashTag index: \(index)")
+    }
+}
+
+// MARK: - Private Methods
+
+private extension TaskThreePresenter {
+    func request() {
+        viewController?.setLoadingVisible(true)
+        apiClient.fetchRequest(page: contentPage) { [weak self] result in
+            guard let self else { return }
+            
+            switch result {
+            case .success(let response):
+                cellModels = response.data.map { TaskThreeCellModel(model: $0) }
+                viewController?.display(models: cellModels)
+                print("content count: \(response.data.count)")
+            case .failure(let error):
+                // TODO: show an error message with an empty view
+                Logger.printError("Failed request with error: \(error)")
+            }
+            viewController?.setLoadingVisible(false)
+        }
     }
 }
