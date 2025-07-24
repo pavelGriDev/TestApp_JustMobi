@@ -9,6 +9,7 @@ import Foundation
 
 protocol TaskThreePresenterProtocol {
     func viewDidLoad()
+    func didSelectHashtag(at index: Int)
 }
 
 final class TaskThreePresenter: TaskThreePresenterProtocol {
@@ -43,5 +44,9 @@ final class TaskThreePresenter: TaskThreePresenterProtocol {
     
     func viewDidLoad() {
         viewController?.display(content: dataSource)
+    }
+    
+    func didSelectHashtag(at index: Int) {
+        Logger.printItems("hashTag index: \(index)")
     }
 }

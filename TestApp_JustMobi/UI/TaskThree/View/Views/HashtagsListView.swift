@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HashtagsListDelegate: AnyObject {
+    func didSelectHashtag(at index: Int)
+}
+
 final class HashtagsListView: UIView {
     
     enum Appearance {
@@ -18,6 +22,8 @@ final class HashtagsListView: UIView {
         static let verticalInset: CGFloat = 0
         static let spacing: CGFloat = 4
     }
+    
+    weak var delegate: HashtagsListDelegate?
     
     private var content: [String] = []
     
@@ -108,9 +114,6 @@ extension HashtagsListView: UICollectionViewDataSource {
 
 extension HashtagsListView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        // TODO: реализовать нажатие на на ячейку
-        
-        print("cell \(indexPath.item)")
+        delegate?.didSelectHashtag(at: indexPath.item)
     }
 }

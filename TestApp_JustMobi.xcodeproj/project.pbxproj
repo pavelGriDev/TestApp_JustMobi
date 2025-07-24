@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CECA09E82E323CE3000FF906 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09E72E323CE3000FF906 /* LoadingView.swift */; };
+		CECA09EB2E325A71000FF906 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA09EA2E325A71000FF906 /* Logger.swift */; };
 		CEEE16C02E2A861800E1D7A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */; };
 		CEEE16C22E2A861800E1D7A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEE16BD2E2A861800E1D7A0 /* LaunchScreen.storyboard */; };
 		CEEE16C32E2A861800E1D7A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEE16B92E2A861800E1D7A0 /* AppDelegate.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CECA09E72E323CE3000FF906 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CECA09EA2E325A71000FF906 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		CEEE16A12E2A80EB00E1D7A0 /* TestApp_JustMobi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp_JustMobi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEE16B92E2A861800E1D7A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CECA09E92E325A5B000FF906 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CECA09EA2E325A71000FF906 /* Logger.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		CEEE16982E2A80EB00E1D7A0 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +95,7 @@
 				CEEE16C72E2AB2E100E1D7A0 /* Extension */,
 				CEEE16C52E2A8B9200E1D7A0 /* App */,
 				CEEE16C62E2A8B9A00E1D7A0 /* UI */,
+				CECA09E92E325A5B000FF906 /* Helper */,
 				CEEE16BA2E2A861800E1D7A0 /* Assets.xcassets */,
 				CEEE16BB2E2A861800E1D7A0 /* Info.plist */,
 			);
@@ -121,6 +134,7 @@
 		CEEE16CA2E2BD49B00E1D7A0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CECA09E72E323CE3000FF906 /* LoadingView.swift */,
 				CEEE16CB2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift */,
 				CEEE16CD2E2E4C3300E1D7A0 /* CircleWithGiftView.swift */,
 				CEEE16D22E2E88F000E1D7A0 /* TaskButton.swift */,
@@ -284,6 +298,7 @@
 				CEEE16D32E2E88F000E1D7A0 /* TaskButton.swift in Sources */,
 				CEEE16D72E2E90A800E1D7A0 /* TaskThreeViewController.swift in Sources */,
 				CEFDA0FF2E313F4800B5C743 /* TaskThreeBuilder.swift in Sources */,
+				CECA09E82E323CE3000FF906 /* LoadingView.swift in Sources */,
 				CEEE16CE2E2E4C3300E1D7A0 /* CircleWithGiftView.swift in Sources */,
 				CEFDA1072E31663900B5C743 /* TaskThreeCell.swift in Sources */,
 				CEEE16C42E2A861800E1D7A0 /* TaskOneViewController.swift in Sources */,
@@ -292,6 +307,7 @@
 				CEFDA1012E31400200B5C743 /* TaskThreePresenter.swift in Sources */,
 				CEEE16CC2E2BD4BD00E1D7A0 /* StrokedTextLabel.swift in Sources */,
 				CEEE16C92E2AB2F900E1D7A0 /* View+ext.swift in Sources */,
+				CECA09EB2E325A71000FF906 /* Logger.swift in Sources */,
 				CEFDA1112E318E4C00B5C743 /* HashtagCell.swift in Sources */,
 				CEFDA1092E31669900B5C743 /* Cell+reuseId.swift in Sources */,
 				CEEE16D12E2E667C00E1D7A0 /* StartViewController.swift in Sources */,

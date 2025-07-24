@@ -9,6 +9,7 @@ import UIKit
 
 protocol TaskThreeViewControllerProtocol: AnyObject {
     func display(content: [Item])
+    func setLoadingVisible(_ isVisible: Bool)
 }
 
 final class TaskThreeViewController: UIViewController, TaskThreeViewControllerProtocol {
@@ -29,6 +30,7 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     
     private lazy var trialBannerView = FreeTrialBannerView()
     private lazy var hashtagsListView = HashtagsListView()
+    private lazy var loadingView = LoadingView()
     
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView()
@@ -63,6 +65,15 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     
     func display(content: [Item]) {
         self.content = content
+        collectionView.reloadData()
+    }
+    
+    func setLoadingVisible(_ isVisible: Bool) {
+        if isVisible {
+            loadingView.start()
+        } else {
+            loadingView.stop()
+        }
     }
     
     // MARK: - Life Circle
@@ -85,11 +96,10 @@ private extension TaskThreeViewController {
         [trialBannerView, hashtagsListView, collectionView].forEach {
             contentStackView.addArrangedSubview($0)
         }
+        hashtagsListView.delegate = self
+        
         view.addSubviewsForAutoLayout(contentStackView)
-    }
-    
-    @objc func tagButtonHandler(_ sender: UIButton) {
-        print("button tag: \(sender.tag)")
+        view.addSubviewsForAutoLayout(loadingView)
     }
     
     func setupLayout() {
@@ -100,6 +110,11 @@ private extension TaskThreeViewController {
             contentStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
             trialBannerView.heightAnchor.constraint(equalToConstant: Appearance.bannerWidth),
+            
+            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
 }
@@ -151,5 +166,11 @@ extension TaskThreeViewController: UICollectionViewDataSourcePrefetching {
         guard let indexPath = indexPaths.first else { return }
         
         print("cancelPrefetchingForItemsAt: \(indexPath.item)")
+    }
+}
+
+extension TaskThreeViewController: HashtagsListDelegate {
+    func didSelectHashtag(at index: Int) {
+        presenter?.didSelectHashtag(at: index)
     }
 }
