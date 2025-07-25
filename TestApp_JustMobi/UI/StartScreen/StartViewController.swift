@@ -20,12 +20,6 @@ final class StartViewController: UIViewController {
         setup()
         setupLayout()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        taskTwoButton.isEnabled = false
-        taskTwoButton.backgroundColor = .lightGray
-    }
 }
 
 // MARK: - Setup
@@ -51,6 +45,9 @@ private extension StartViewController {
         case 0:
             let taskOneViewController = TaskOneViewController()
             navigationController?.pushViewController(taskOneViewController, animated: true)
+        case 1:
+            let taskTwoViewController = TaskTwoViewController()
+            navigationController?.pushViewController(taskTwoViewController, animated: true)
         case 2:
             let taskThreeViewController = TaskThreeBuilder().build()
             navigationController?.pushViewController(taskThreeViewController, animated: true)

@@ -41,7 +41,7 @@ class TaskOneViewController: UIViewController {
     }
 }
 
-// MARK: - Setup
+// MARK: - Private Methods
 
 private extension TaskOneViewController {
     
