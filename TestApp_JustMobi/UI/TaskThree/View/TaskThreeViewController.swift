@@ -82,15 +82,15 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
         setupLayout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        presenter?.showGiftIfNeeded { [weak self] timeLimit in
-            guard let self else { return }
-            giftView.isHidden = false
-            giftView.startAnimation()
-            giftView.setTime(timeLimit)
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        presenter?.showGiftIfNeeded { [weak self] timeLimit in
+//            guard let self else { return }
+//            giftView.isHidden = false
+//            giftView.startAnimation()
+//            giftView.setTime(timeLimit)
+//        }
+//    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -122,6 +122,13 @@ extension TaskThreeViewController {
             UIView.transition(with: self.collectionView, duration: 0.3, options: [.transitionCrossDissolve], animations: {
                 self.collectionView.reloadData()
             })
+            
+            self.presenter?.showGiftIfNeeded { [weak self] timeLimit in
+                guard let self else { return }
+                giftView.isHidden = false
+                giftView.startAnimation()
+                giftView.setTime(timeLimit)
+            }
         }
     }
     
