@@ -12,6 +12,8 @@ protocol TaskThreeViewControllerProtocol: AnyObject {
     func displayTrialBanner(with model: TaskThreeFreeTrialBannerModel, isVisible: Bool)
     func display(hashTags: [String])
     func display(models: [TaskThreeCellModel])
+    func updateGiftTimer(time: Int)
+    func giftTimerDidEnd()
     func setLoadingVisible(_ isVisible: Bool)
 }
 
@@ -20,6 +22,8 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     enum Appearance {
         static let horizontalOffset: CGFloat = 16
         static let contentSpacing: CGFloat = 15
+        static let giftWidth: CGFloat = 88
+        static let giftBottomOffset: CGFloat = 7
         // collection content
         static let horizontalInset: CGFloat = 16
         static let verticalInset: CGFloat = 8
@@ -33,6 +37,12 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
     private lazy var trialBannerView = FreeTrialBannerView()
     private lazy var hashtagsListView = HashtagsListView()
     private lazy var loadingView = LoadingView()
+    
+    private lazy var giftView: CircleWithGiftView = {
+        let view = CircleWithGiftView(imageName: .giftBoxRed)
+        view.isHidden = true
+        return view
+    }()
     
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView()
@@ -71,6 +81,22 @@ final class TaskThreeViewController: UIViewController, TaskThreeViewControllerPr
         setup()
         setupLayout()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.showGiftIfNeeded { [weak self] timeLimit in
+            guard let self else { return }
+            giftView.isHidden = false
+            giftView.startAnimation()
+            giftView.setTime(timeLimit)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        presenter?.viewDidDisappear()
+        giftView.stopAnimation()
+    }
 }
 
 // MARK: - TaskThreeViewControllerProtocol
@@ -97,6 +123,14 @@ extension TaskThreeViewController {
         }
     }
     
+    func updateGiftTimer(time: Int) {
+        giftView.setTime(time)
+    }
+    
+    func giftTimerDidEnd() {
+        giftView.isHidden = true
+    }
+    
     func setLoadingVisible(_ isVisible: Bool) {
         DispatchQueue.main.async {
             if isVisible {
@@ -121,10 +155,24 @@ private extension TaskThreeViewController {
         hashtagsListView.delegate = self
         view.addSubviewsForAutoLayout(contentStackView)
         view.addSubviewsForAutoLayout(loadingView)
+        view.addSubviewsForAutoLayout(giftView)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(giftTapGesture))
+        giftView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func giftTapGesture() {
+        presenter?.giftGestureTapped()
+        Logger.printItems("Show a gift...")
     }
     
     func setupLayout() {
         NSLayoutConstraint.activate([
+            giftView.widthAnchor.constraint(equalToConstant: Appearance.giftWidth),
+            giftView.heightAnchor.constraint(equalTo: giftView.widthAnchor),
+            giftView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Appearance.horizontalOffset),
+            giftView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Appearance.giftBottomOffset),
+            
             contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             contentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             contentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),

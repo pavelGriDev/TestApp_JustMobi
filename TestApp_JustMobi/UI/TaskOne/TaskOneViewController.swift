@@ -61,7 +61,7 @@ private extension TaskOneViewController {
             giftView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             giftView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             giftView.widthAnchor.constraint(equalToConstant: Appearance.circleGiftViewWidth),
-            giftView.heightAnchor.constraint(equalToConstant: Appearance.circleGiftViewWidth),
+            giftView.heightAnchor.constraint(equalTo: giftView.widthAnchor),
         ])
     }
 }

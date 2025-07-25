@@ -9,7 +9,10 @@ import Foundation
 
 protocol TaskThreePresenterProtocol {
     func viewDidLoad()
+    func viewDidDisappear()
     func didSelectHashtag(at index: Int)
+    func showGiftIfNeeded(completion: (Int) -> Void)
+    func giftGestureTapped()
 }
 
 final class TaskThreePresenter: TaskThreePresenterProtocol {
@@ -21,6 +24,10 @@ final class TaskThreePresenter: TaskThreePresenterProtocol {
     private var hashTags = [String]()
     private var showTrialBanner = true
     private var contentPage = 0
+    
+    private var showGift = true
+    private var timeLimit = 1200
+    private weak var giftTimer: Timer?
     
     init(
         viewController: TaskThreeViewControllerProtocol?,
@@ -40,8 +47,24 @@ final class TaskThreePresenter: TaskThreePresenterProtocol {
         request()
     }
     
+    func viewDidDisappear() {
+        // TODO: save time to local storage if needed
+        stopTimer()
+    }
+    
     func didSelectHashtag(at index: Int) {
         Logger.printItems("hashTag index: \(index)")
+    }
+    
+    func showGiftIfNeeded(completion: (Int) -> Void) {
+        if showGift {
+            completion(timeLimit)
+            createTimer()
+        }
+    }
+    
+    func giftGestureTapped() {
+        // some logic
     }
 }
 
@@ -65,5 +88,34 @@ private extension TaskThreePresenter {
             }
             viewController?.setLoadingVisible(false)
         }
+    }
+}
+
+// MARK: - Timer
+
+private extension TaskThreePresenter {
+    
+    func createTimer() {
+        stopTimer()
+        giftTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+            guard let self else { return }
+            timeLimit -= 1
+            viewController?.updateGiftTimer(time: timeLimit)
+            
+            if timeLimit <= 0 {
+                stopTimer()
+                viewController?.giftTimerDidEnd()
+            }
+        })
+        
+        if let giftTimer {
+            giftTimer.tolerance = 0.4
+            RunLoop.main.add(giftTimer, forMode: .common)
+        }
+    }
+
+    func stopTimer() {
+        giftTimer?.invalidate()
+        giftTimer = nil
     }
 }
