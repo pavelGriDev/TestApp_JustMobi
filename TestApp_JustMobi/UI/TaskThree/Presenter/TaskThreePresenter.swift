@@ -21,6 +21,8 @@ final class TaskThreePresenter: TaskThreePresenterProtocol {
     private let apiClient: ApiClientProtocol
     
     private var cellModels = [TaskThreeCellModel]()
+    private var filteredCellModels = [TaskThreeCellModel]()
+    private var selectedHashTagIndex: Int?
     private var hashTags = [String]()
     private var showTrialBanner = true
     private var contentPage = 0
@@ -53,7 +55,16 @@ final class TaskThreePresenter: TaskThreePresenterProtocol {
     }
     
     func didSelectHashtag(at index: Int) {
-        Logger.printItems("hashTag index: \(index)")
+        if let selectedHashTagIndex, selectedHashTagIndex == index {
+            filteredCellModels = []
+            self.selectedHashTagIndex = nil
+            viewController?.display(models: cellModels)
+        } else {
+            let hashTag = hashTags[index]
+            filteredCellModels = cellModels.filter { $0.hashTags.contains(hashTag) }
+            viewController?.display(models: filteredCellModels)
+            selectedHashTagIndex = index
+        }
     }
     
     func showGiftIfNeeded(completion: (Int) -> Void) {

@@ -119,7 +119,9 @@ extension TaskThreeViewController {
     func display(models: [TaskThreeCellModel]) {
         cellModels = models
         DispatchQueue.main.async {
-            self.collectionView.reloadData()
+            UIView.transition(with: self.collectionView, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+                self.collectionView.reloadData()
+            })
         }
     }
     
@@ -239,7 +241,6 @@ extension TaskThreeViewController: UICollectionViewDataSourcePrefetching {
             print("Load more items....")
         }
         
-//        print("prefetchItemsAt: \(indexPath.item)")
     }
 }
 
